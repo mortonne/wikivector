@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+#
+# Read article text from a Wikipedia dump.
+
+
+import argparse
+from wikivector import wiki
+
+
+def main(header_file, title):
+    text_file = wiki.article_file(header_file, title)
+    article = wiki.article_text(text_file, title)
+    print(article)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('header_file', help="Path to header file")
+    parser.add_argument('title', help="Title of article to read")
+    args = parser.parse_args()
+    main(args.header_file, args.title)

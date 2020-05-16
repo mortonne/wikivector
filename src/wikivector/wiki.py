@@ -35,12 +35,11 @@ def dump_pages(dump_dir):
     return df
 
 
-def article_file(header_file, title):
+def article_file(header, title):
     """Find which file has text for an article."""
-    df = pd.read_csv(header_file)
-    row = df.query(f'title == "{title}"')
+    row = header.query(f'title == "{title}"')
     if row.size == 0:
-        raise RuntimeError(f'Article "{title}" not found in header: {header_file}')
+        raise RuntimeError(f'Article "{title}" not found.')
     return row['file'].iloc[0]
 
 

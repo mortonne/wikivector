@@ -4,6 +4,7 @@ import os
 import glob
 import re
 import pandas as pd
+from selectolax.parser import HTMLParser
 
 
 def file_titles(text_file):
@@ -32,3 +33,26 @@ def dump_pages(dump_dir):
                 wiki_files.append(text_file)
     df = pd.DataFrame({'title': wiki_titles, 'file': wiki_files})
     return df
+
+
+def article_file(header_file, title):
+    """Find which file has text for an article."""
+    df = pd.read_csv(header_file)
+    row = df.query(f'title == "{title}"')
+    if row.size == 0:
+        raise RuntimeError(f'Article "{title}" not found in header: {header_file}')
+    return row['file'].iloc[0]
+
+
+def article_text(text_file, title):
+    """Extract article text from a text dump file."""
+    with open(text_file, 'r') as f:
+        full_text = f.read()
+    tree = HTMLParser(full_text)
+    articles = tree.css('doc')
+    titles = [art.attributes['title'] for art in articles]
+    if title not in titles:
+        raise RuntimeError(f'Article "{title}" not found in file: {text_file}')
+    raw = articles[titles.index(title)].text()
+    article = raw.replace('\n', ' ').strip()
+    return article

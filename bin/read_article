@@ -4,11 +4,13 @@
 
 
 import argparse
+import pandas as pd
 from wikivector import wiki
 
 
 def main(header_file, title):
-    text_file = wiki.article_file(header_file, title)
+    header = pd.read_csv(header_file)
+    text_file = wiki.article_file(header, title)
     article = wiki.article_text(text_file, title)
     print(article)
 

@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+#
+# Create a header file for extracted Wikipedia text.
+
+import argparse
+from wikivector import wiki
+
+
+def main(wiki_text_dir, header_file):
+    df = wiki.dump_pages(wiki_text_dir)
+    df.to_csv(header_file, index=False)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('wiki_dir', help="Path to output from WikiExtractor")
+    parser.add_argument('header_file', help="Path to output header file")
+    args = parser.parse_args()
+
+    main(args.wiki_dir, args.header_file)

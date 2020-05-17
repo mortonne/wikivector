@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+#
+# Create vector embeddings of articles.
+
+import argparse
+import pandas as pd
+from wikivector import vector
+
+
+def main(map_file, text_dir, h5_file):
+    df = pd.read_csv(map_file)
+    items = df['item'].tolist()
+    vectors = vector.embed_items_use(items, text_dir)
+    vector.save_vectors(items, vectors, h5_file)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('map_file', help="Path to item map file")
+    parser.add_argument('text_dir', help="Path to directory with text files")
+    parser.add_argument('h5_file', help="Path to output hdf5 file")
+    args = parser.parse_args()
+    main(args.map_file, args.text_dir, args.h5_file)

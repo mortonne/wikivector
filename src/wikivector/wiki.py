@@ -7,16 +7,21 @@ import pandas as pd
 from selectolax.parser import HTMLParser
 
 
+def file_articles(text_file):
+    """Get list of article nodes."""
+    with open(text_file, 'r') as f:
+        full_text = f.read()
+    full_text = re.sub('<!--', '', full_text)
+    tree = HTMLParser(full_text)
+    articles = tree.css('doc')
+    return articles
+
+
 def file_titles(text_file):
     """Get all page titles in a text file."""
-    pattern = re.compile('title="(.*)"')
-    file_titles = []
-    with open(text_file, 'r') as f:
-        for line in f:
-            if line.startswith('<doc'):
-                m = re.search(pattern, line)
-                file_titles.append(m.group(1))
-    return file_titles
+    articles = file_articles(text_file)
+    titles = [art.attributes['title'] for art in articles]
+    return titles
 
 
 def dump_pages(dump_dir):
@@ -45,10 +50,7 @@ def article_file(header, title):
 
 def article_text(text_file, title):
     """Extract article text from a text dump file."""
-    with open(text_file, 'r') as f:
-        full_text = f.read()
-    tree = HTMLParser(full_text)
-    articles = tree.css('doc')
+    articles = file_articles(text_file)
     titles = [art.attributes['title'] for art in articles]
     if title not in titles:
         raise RuntimeError(f'Article "{title}" not found in file: {text_file}')

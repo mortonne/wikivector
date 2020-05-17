@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+#
+# Export article text from a Wikipedia dump.
+
+
+import os
+import argparse
+import pandas as pd
+from wikivector import wiki
+
+
+def main(header_file, map_file, output_dir):
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    item_map = pd.read_csv(map_file)
+    titles = item_map['title']
+    items = item_map['item']
+
+    header = pd.read_csv(header_file)
+    for title, file_name in zip(titles, items):
+        # locate and read the text
+        text_file = wiki.article_file(header, title)
+        text = wiki.article_text(text_file, title)
+
+        # write to an output file
+        output = os.path.join(output_dir, f'{file_name}.txt')
+        with open(output, 'w') as f:
+            f.write(text)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('header_file', help="Path to Wikipedia dump header")
+    parser.add_argument('map_file', help="Path to item map file")
+    parser.add_argument('output_dir', help="Path to output directory")
+    args = parser.parse_args()
+    main(args.header_file, args.map_file, args.output_dir)

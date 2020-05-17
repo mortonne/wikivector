@@ -1,3 +1,4 @@
+import glob
 import setuptools
 
 
@@ -5,6 +6,8 @@ def readme():
     with open('README.md') as f:
         return f.read()
 
+
+scripts = glob.glob('bin/[a-z]*')
 
 setuptools.setup(
     name='wikivector',
@@ -18,6 +21,7 @@ setuptools.setup(
     url='http://github.com/mortonne/wikivector',
     packages=setuptools.find_packages('src'),
     package_dir={'': 'src'},
+    scripts=scripts,
     install_requires=[
         'pandas',
     ],

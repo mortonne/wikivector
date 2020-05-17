@@ -34,3 +34,21 @@ export_articles header_file map_file output_dir
 
 where `map_file` is the CSV file with your items, and `output_dir` is
 where you want to save text files with each item's article.
+
+## Universal Sentence Encoder
+
+Once articles have been exported, you can calculate a vector embedding
+for each item using the Universal Sentence Encoder.
+
+```bash
+embed_articles map_file text_dir h5_file
+```
+
+This reads a map file specifying an item pool (only the "item" field is 
+used) and outputs vectors in an hdf5 file. To read the vectors, in 
+Python:
+
+```python
+from wikivector import vector
+vectors, items = vector.load_vectors(h5_file)
+```

@@ -23,7 +23,11 @@ setuptools.setup(
     package_dir={'': 'src'},
     scripts=scripts,
     install_requires=[
+        'selectolax',
+        'numpy',
+        'h5py',
         'pandas',
+        'tensorflow_hub',
     ],
     classifiers=[
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',

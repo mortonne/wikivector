@@ -3,10 +3,16 @@ Tools for encoding Wikipedia articles as vectors.
 
 ## Installation
 
-Get a clone of the repository, then run:
+To get the latest stable version:
 
 ```bash
-python setup.py install
+pip install wikivector
+```
+
+To get the development version:
+
+```bash
+pip install git+git://github.com/mortonne/wikivector
 ```
 
 ## Exporting Wikipedia text

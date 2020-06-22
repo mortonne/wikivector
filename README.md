@@ -58,3 +58,9 @@ Python:
 from wikivector import vector
 vectors, items = vector.load_vectors(h5_file)
 ```
+
+## Citation
+
+If you use wiki2vec, please cite the following paper:
+
+Morton, NW*, Zippi, EL*, Noh, S, Preston, AR. In revision. Semantic knowledge of famous people and places is represented in distinct networks that converge in hippocampus. * authors contributed equally

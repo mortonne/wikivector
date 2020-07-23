@@ -11,7 +11,7 @@ def main(map_file, text_dir, h5_file):
     df = pd.read_csv(map_file)
     items = df['item'].tolist()
     vectors = vector.embed_items_use(items, text_dir)
-    vector.save_vectors(items, vectors, h5_file)
+    vector.save_vectors(vectors, items, h5_file)
 
 
 if __name__ == '__main__':

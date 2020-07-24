@@ -1,4 +1,7 @@
 # wikivector
+
+[![PyPI version](https://badge.fury.io/py/wikivector.svg)](https://badge.fury.io/py/wikivector)
+
 Tools for encoding Wikipedia articles as vectors.
 
 ## Installation

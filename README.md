@@ -1,6 +1,7 @@
 # wikivector
 
 [![PyPI version](https://badge.fury.io/py/wikivector.svg)](https://badge.fury.io/py/wikivector)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4453878.svg)](https://doi.org/10.5281/zenodo.4453878)
 
 Tools for encoding Wikipedia articles as vectors.
 

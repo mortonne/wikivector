@@ -1,0 +1,30 @@
+{
+    "title": "WikiVector: Tools for encoding Wikipedia articles as vectors",
+    "license": {
+        "id": "GPL-3.0"
+    },
+    "upload_type": "software",
+    "creators": [
+        {
+            "name": "Neal W Morton",
+            "affiliation": "The University of Texas at Austin",
+            "orcid": "0000-0002-2631-2710"
+        },
+        {
+            "name": "Ellen L. Zippi",
+            "affiliation": "University of California, Berkeley",
+            "orcid": "0000-0001-8246-5781"
+        },
+        {
+            "name": "Sharon M. Noh",
+            "affiliation": "University of California, Los Angeles",
+            "orcid": "0000-0003-0002-7759"
+        },
+        {
+            "name": "Alison R. Preston",
+            "affiliation": "The University of Texas at Austin",
+            "orcid": "0000-0003-2706-6862"
+        }
+    ],
+    "access_right": "open"
+}

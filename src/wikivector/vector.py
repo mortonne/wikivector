@@ -51,6 +51,6 @@ def save_vectors(vectors, items, h5_file):
 def load_vectors(h5_file):
     """Load vectors from an hdf5 file."""
     with h5py.File(h5_file, 'r') as f:
-        items = f['items'][()]
+        items = [item for item in f['items'].asstr()]
         vectors = f['vectors'][()]
     return vectors, items

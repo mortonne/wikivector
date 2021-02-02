@@ -11,7 +11,7 @@ scripts = glob.glob('bin/[a-z]*')
 
 setuptools.setup(
     name='wikivector',
-    version='1.0.0',
+    version='1.1.0',
     description='Tools for encoding Wikipedia articles as vectors.',
     long_description=readme(),
     long_description_content_type="text/markdown",

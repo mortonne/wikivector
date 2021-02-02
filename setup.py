@@ -25,7 +25,7 @@ setuptools.setup(
     install_requires=[
         'selectolax',
         'numpy',
-        'h5py',
+        'h5py>=3',
         'pandas',
         'tensorflow_hub',
     ],

@@ -65,6 +65,8 @@ vectors, items = vector.load_vectors(h5_file)
 
 ## Citation
 
-If you use wiki2vec, please cite the following paper:
+If you use wikivector, please cite the following paper:
 
-Morton, NW*, Zippi, EL*, Noh, S, Preston, AR. In revision. Semantic knowledge of famous people and places is represented in distinct networks that converge in hippocampus. * authors contributed equally
+Morton, NW*, Zippi, EL*, Noh, S, Preston, AR. In press.
+Semantic knowledge of famous people and places is represented in hippocampus and distinct cortical networks.
+Journal of Neuroscience. *authors contributed equally

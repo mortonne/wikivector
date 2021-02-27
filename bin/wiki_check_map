@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+#
+# Check if items in an item map are in a header file.
+
+import argparse
+import pandas as pd
+
+
+def main(header_file, map_file):
+    item_map = pd.read_csv(map_file)
+    titles = item_map['title']
+    items = item_map['item']
+
+    header = pd.read_csv(header_file)
+    for title, item in zip(titles, items):
+        row = header.query(f'title == "{title}"')
+        if row.size == 0:
+            print(f'Article "{title}" for item "{item}" not found.')
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('header_file', help="Path to Wikipedia dump header")
+    parser.add_argument('map_file', help="Path to item map file")
+    args = parser.parse_args()
+    main(args.header_file, args.map_file)

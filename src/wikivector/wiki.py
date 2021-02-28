@@ -1,6 +1,7 @@
 """Access information from a Wikipedia dump."""
 
 import os
+from pathlib import Path
 import glob
 import re
 import pandas as pd
@@ -35,7 +36,10 @@ def dump_pages(dump_dir):
             all_titles = file_titles(text_file)
             for title in all_titles:
                 wiki_titles.append(title)
-                wiki_files.append(text_file)
+                # get path relative to dump directory
+                parts = Path(text_file).parts[-2:]
+                file = os.path.join(*parts)
+                wiki_files.append(file)
     df = pd.DataFrame({'title': wiki_titles, 'file': wiki_files})
     return df
 

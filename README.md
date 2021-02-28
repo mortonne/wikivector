@@ -36,14 +36,32 @@ and the file in which it can be found.
 
 To extract specific articles, write a CSV file with two columns: "item"
 and "title". The "title" for each item must exactly match an article
-title in the Wikipedia dump. To extract the text for each item:
+title in the Wikipedia dump. We refer to this file as the `map_file`.
+
+If you are working with an older Wikipedia dump, it can be difficult to 
+find the correct titles for article pages, as page titles may have changed
+between the archive and the current online version of Wikipedia. To help 
+identify mismatches between the map file and the Wikipedia dump, you can 
+run:
+
+```bash
+wiki_check_run header_file map_file
+```
+
+to display any items whose article is not found in the header file. You 
+can then use the Bash utility `grep` to search the header file for correct 
+titles for each missing item.
+
+When your map file is ready, extract the text for each item:
 
 ```bash
 export_articles header_file map_file output_dir
 ```
 
 where `map_file` is the CSV file with your items, and `output_dir` is
-where you want to save text files with each item's article.
+where you want to save text files with each item's article. Check the
+output carefully to ensure that you have the correct text for each item
+and that XML tags have been stripped out.
 
 ## Universal Sentence Encoder
 

@@ -18,10 +18,12 @@ def main(header_file, map_file, output_dir):
     items = item_map['item']
 
     header = pd.read_csv(header_file)
+    text_dir = os.path.dirname(header_file)
     for title, file_name in zip(titles, items):
         # locate and read the text
         text_file = wiki.article_file(header, title)
-        text = wiki.article_text(text_file, title)
+        full_file = os.path.join(text_dir, text_file)
+        text = wiki.article_text(full_file, title)
 
         # write to an output file
         output = os.path.join(output_dir, f'{file_name}.txt')

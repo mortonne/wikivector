@@ -45,7 +45,7 @@ identify mismatches between the map file and the Wikipedia dump, you can
 run:
 
 ```bash
-wiki_check_run header_file map_file
+wiki_check_map header_file map_file
 ```
 
 to display any items whose article is not found in the header file. You 

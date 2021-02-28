@@ -27,12 +27,12 @@ subdirectories and text files within each subdirectory. Next, build
 a header file with a list of all articles in the extracted text data:
 
 ```bash
-wiki_header wiki_dir header_file
+wiki_header wiki_dir
 ```
 
 where `wiki_dir` is the path to the output from `WikiExtractor`. 
-The `header_file` will be a CSV file with the title of each article
-and the file in which it can be found.
+This will create a CSV file called `header.csv` with the title of each 
+article and the file in which it can be found.
 
 To extract specific articles, write a CSV file with two columns: "item"
 and "title". The "title" for each item must exactly match an article

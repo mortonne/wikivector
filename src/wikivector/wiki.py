@@ -61,3 +61,50 @@ def article_text(text_file, title):
     raw = articles[titles.index(title)].text()
     article = raw.replace('\n', ' ').strip()
     return article
+
+
+def remove_tags(input_file, output_file):
+    """Remove any tags in text that remain after extraction."""
+    with open(input_file, 'r') as f:
+        text = f.read()
+
+    # remove any ending tag blocks
+    blocks = list(re.finditer(r'(\s*\[\[[^\[^\]]*\]\]\s*)+$', text))
+    if blocks:
+        block_start = blocks[-1].start()
+        text_main = text[:block_start]
+    else:
+        text_main = text
+
+    # get just the label from each individual tag
+    matches = re.finditer(r'\[\[[^\[]*\]\]', text_main)
+    last_ind = 0
+    text_clean = ''
+    for match in matches:
+        text_clean += text_main[last_ind:match.start()]
+        tag = match.group(0)
+        contents = tag[2:-2]
+        text_clean += contents.split('|')[-1]
+        last_ind = match.end()
+    text_clean += text_main[last_ind:]
+
+    # remove table cell definitions
+    text_clean = re.sub('(!\s*(\s*\w*="[\w\s#:;]*"\s*)*\s*\|[\w\s]*)', '', text_clean)
+
+    # remove footnotes
+    match = re.search(r'\^(\s+[a-z])+', text_clean)
+    if match is not None:
+        text_clean = text_clean[:match.start()]
+
+    # remove references
+    match = re.search(
+        f'\s*(References|External links|Media|See also)\.', text_clean
+    )
+    if match is not None:
+        text_clean = text_clean[:match.start()]
+
+    # remove tags
+    text_clean = re.sub('<.*?>', '', text_clean)
+
+    with open(output_file, 'w') as f:
+        f.write(text_clean)

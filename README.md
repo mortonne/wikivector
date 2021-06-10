@@ -85,6 +85,7 @@ vectors, items = vector.load_vectors(h5_file)
 
 If you use wikivector, please cite the following paper:
 
-Morton, NW*, Zippi, EL*, Noh, S, Preston, AR. In press.
+Morton, NW*, Zippi, EL*, Noh, S, Preston, AR. 2021.
 Semantic knowledge of famous people and places is represented in hippocampus and distinct cortical networks.
-Journal of Neuroscience. *authors contributed equally
+Journal of Neuroscience. 41(12) 2762-2779.
+doi:[10.1523/JNEUROSCI.2034-19.2021](http:doi.org/10.1523/JNEUROSCI.2034-19.2021). *authors contributed equally

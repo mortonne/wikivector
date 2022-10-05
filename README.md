@@ -5,6 +5,19 @@
 
 Tools for encoding Wikipedia articles as vectors.
 
+The [wiki2USE method](https://doi.org/10.1523/JNEUROSCI.2034-19.2021), which is implemented in this project, makes it possible to quantify the conceptual similarity of any familiar stimuli (such as well-known people, places, or things) without having to collect massive datasets of similarity ratings from participants. 
+
+Conceptual similarity estimates can then be used to inform psychology and cognitive neuroscience experiments by providing information about general prior knowledge that participants may have about stimuli before beginning an experiment. Snapshots of Wikipedia at different times can be used to reflect changing public knowledge.
+
+<div align="center">
+  <div style="max-width:500px; margin:0 20px;">
+    <img src="https://github.com/mortonne/wikivector/blob/master/images/wikivector.png" alt="schematic showing how Wikipedia entries are used to estimate conceptual similarity of two famous people, Julia Roberts and Barack Obama" width="500px">
+    <div style="text-align:left; padding:10px 0;">
+    Schematic illustrating the wiki2USE method. First, each item of interest is matched to a corresponding Wikipedia article. Next, the text for each article is extracted and encoded using the universal sentence encoder to create a 512-dimensional vector that reflects the meaning of the information contained in the Wikipedia article. Finally, the vectors for different items are compared to estimate their conceptual similarity. Item similarity can be visualized using multidimensional scaling, which places items such that their relative distance reflects their relative dissimlarity. Model similarity correlates with human ratings of conceptual similarity.
+    </div>
+  </div>
+</div>
+
 ## Installation
 
 To get the latest stable version:
